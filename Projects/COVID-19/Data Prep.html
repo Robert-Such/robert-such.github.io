@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>COVID-19 Data Prep</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+					<header id="header">
+						<a href="../../index.html" class="logo">COVID-19</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="../../index.html"><u>Portfolio</u></a></li>
+							<li><a href="Intro.html">Covid-19 Intro</a></li>
+							<li class="active"><a href="Data%20Prep.html">Covid-19 Data Prep</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/robertesuch/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/Robert-Such" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.kaggle.com/robertsuch" class="icon brands fa-kaggle"><span class="label">Kaggle</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<h3>Preparing the Data</h3>
+								<p> There are 67 attributes in this dataset and the way Alex handles the data is different from how
+									I decided to do it.  In his video Alex suggests opening the CSV in Excel and essentially splitting
+									the data into two sub sets (as Excel files) which roughly speak to covid deaths and vaccinations
+									respectively. I am not sure why, but I personally had some issues with modifying the data in this
+									manner since the total amount of records should have technically remained at ~156k at the time
+									while after splitting I was only seeing about half that amount.  After multiple tries without
+									success I ultimately decided to work around this by importing the entire dataset first and then
+									splitting the set within SQL instead.
+								</p>
+								<p> As a Windows user Alex uses MS-SQL Server Management Studio to import (and work
+									with) the data however as Mac users we will have to use an alternative such as Azure Data
+									Studio, or DataGrip etc.  In any case please make sure you double-check that the suggested
+									data types for each attribute is appropriate upon importation (example below).  Also note
+									that many of the attributes have missing data so Null values will need to be allowed.
+								</p>
+
+								<style>
+								img {
+								  display: block;
+								  margin-left: auto;
+								  margin-right: auto;
+								}
+								</style>
+								<p>
+								<img src="Images/data%20types.png" alt="" class="center"/>
+								</p>
+								<p>
+									For the imported data I assigned the name "owid-covid-data". The next step will be to create
+									two sub tables with the same attributes as Alex's two split excel sheets. The first
+									sub-table can be called "covid_deaths":
+								</p>
+								<p>
+								<img src="Images/createcovidtable.png" alt="" class="center" height="700" width="600"/>
+								</p>
+								<p>
+									The next table that we need to create, called "covid vaccinations", can be created in
+									a similar fashion except this time we can clone the main imported table and then trim it
+									down to what we need by dropping specfic columns:
+								</p>
+								<p>
+								<img src="Images/createcovidvactable.png" alt="" class="center" height="700" width="600"/>
+								</p>
+								<p>
+								A more detailed set of the code referenced above can be found on my github page
+								<a href="https://github.com/Robert-Such/Exploration_Covid-Data/blob/master/SQL/data_prep.sql">(see here).</a>
+								</p>
+								<p>
+								Now we can move onto the next step in which we do some analysis of this data directly
+								using SQL itself.
+								</p>
+								<p>
+								<a href="Explore.html"><strong>Next Step: Exploring the Data in SQL</strong></a>
+								</p>
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+				<!--		<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>1234 Somewhere Road #87257<br />
+								Nashville, TN 00000-0000</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(000) 000-0000</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">info@untitled.tld</a></p>
+							</section>-->
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/robertesuch/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+									<li><a href="https://github.com/Robert-Such" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.kaggle.com/robertsuch" class="icon brands fa-kaggle"><span class="label">Kaggle</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>
